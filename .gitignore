@@ -1,0 +1,13 @@
+# Local configuration and runtime files
+.env
+*.log
+
+# Editor and operating-system metadata
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# PHP dependency/cache artifacts
+/vendor/
+.phpunit.result.cache

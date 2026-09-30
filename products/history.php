@@ -1,0 +1,6 @@
+<?php
+require_once __DIR__ . '/../includes/auth.php';
+require_login();$active_menu='products';$rows=all_rows("SELECT pu.*,p.product_name,a.appointment_id,CONCAT(c.first_name,' ',c.last_name) customer_name FROM product_usage pu JOIN products p ON p.product_id=pu.product_id JOIN appointments a ON a.appointment_id=pu.appointment_id JOIN customers c ON c.customer_id=a.customer_id ORDER BY pu.usage_date DESC,pu.usage_id DESC");$page_title='Product Usage History';require __DIR__.'/../includes/header.php';
+?>
+<div class="d-flex justify-content-end mb-3"><a class="btn btn-outline-secondary" href="<?=e(app_url('products/index.php'))?>">Back to products</a></div><div class="card shadow-sm table-card"><div class="table-responsive"><table class="table table-hover align-middle mb-0"><thead><tr><th>Date</th><th>Product</th><th>Quantity used</th><th>Appointment</th><th>Customer</th></tr></thead><tbody><?php if(!$rows):?><tr><td colspan="5" class="text-center py-4 text-secondary">No product usage has been recorded.</td></tr><?php endif;?><?php foreach($rows as $row):?><tr><td><?=e($row['usage_date'])?></td><td><?=e($row['product_name'])?></td><td><?= (int)$row['quantity_used']?></td><td>#<?= (int)$row['appointment_id']?></td><td><?=e($row['customer_name'])?></td></tr><?php endforeach;?></tbody></table></div></div>
+<?php require __DIR__.'/../includes/footer.php';
