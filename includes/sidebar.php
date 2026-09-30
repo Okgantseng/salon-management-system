@@ -20,7 +20,7 @@ $navigation = [
     <nav class="nav flex-column mt-3">
         <?php foreach ($navigation as $key => [$label, $path, $icon]): ?>
             <a class="nav-link <?= $active_menu === $key ? 'active' : '' ?>" href="<?= e(app_url($path)) ?>">
-                <span><?= e($label) ?></span>
+                <i class="bi <?= e($icon) ?> nav-icon" aria-hidden="true"></i><span><?= e($label) ?></span>
             </a>
         <?php endforeach; ?>
     </nav>
