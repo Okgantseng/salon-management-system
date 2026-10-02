@@ -186,7 +186,7 @@ INSERT INTO customers (first_name, last_name, phone, email, gender, date_registe
 ('Sibusiso', 'Nene', '0767890164', 'sibusiso.nene@example.co.za', 'Male', DATE_SUB(CURDATE(), INTERVAL 4 DAY));
 
 INSERT INTO users (customer_id, full_name, username, password_hash, role)
-SELECT customer_id, CONCAT(first_name, ' ', last_name), 'thandi', '$2y$10$.puOiS.nfN4yzzWhgx7Lqe7WCa3z8Hjr.GvWg6Vzjd62BVzo3/25.', 'Customer'
+SELECT customer_id, CONCAT(first_name, ' ', last_name), 'thandi', '$2y$10$mpXt0HEMbYhklLq8Hz38weYdvOSQi5mvVONwEXSeGMqvRe0z1g642', 'Customer'
 FROM customers WHERE email = 'thandi.mokoena@example.co.za';
 
 INSERT INTO staff (first_name, last_name, phone, email, position, status) VALUES
@@ -291,3 +291,20 @@ INSERT INTO product_usage (product_id, appointment_id, quantity_used, usage_date
 
 -- 3NF design note: service_price is an appointment-time price snapshot so historical
 -- invoices/reports remain correct after a service's current price changes.
+USE salon_management;
+
+INSERT INTO users (customer_id, full_name, username, password_hash, role) SELECT customer_id, 'Thandi Mokoena', 'thandi', '$2y$10$rHVRWul3TB/XE3oCDVUo2uxH65dlreCYWgS/u0.QFOmYnwd2INlTm', 'Customer' FROM customers WHERE customer_id = 1 AND NOT EXISTS (SELECT 1 FROM users WHERE customer_id = 1);
+INSERT INTO users (customer_id, full_name, username, password_hash, role) SELECT customer_id, 'Lerato Nkosi', 'lerato.nkosi', '$2y$10$kBcObiwB3wjared4J7Lco.iMOoebYzR1sCH3xNptfH8XUHCtrFCkG', 'Customer' FROM customers WHERE customer_id = 2 AND NOT EXISTS (SELECT 1 FROM users WHERE customer_id = 2);
+INSERT INTO users (customer_id, full_name, username, password_hash, role) SELECT customer_id, 'Sipho Dlamini', 'sipho.dlamini', '$2y$10$BlEqG35odfBsTFJW.LvL2./BKVVipTjwbSBlaj8Xt/RfgiIk.vUz2', 'Customer' FROM customers WHERE customer_id = 3 AND NOT EXISTS (SELECT 1 FROM users WHERE customer_id = 3);
+INSERT INTO users (customer_id, full_name, username, password_hash, role) SELECT customer_id, 'Nomsa Khumalo', 'nomsa.khumalo', '$2y$10$afjXMaaxhoAEM8eyRWLBMu9nBebLAN6tVm2N.IkRXhJd3s.EwSBpm', 'Customer' FROM customers WHERE customer_id = 4 AND NOT EXISTS (SELECT 1 FROM users WHERE customer_id = 4);
+INSERT INTO users (customer_id, full_name, username, password_hash, role) SELECT customer_id, 'Kagiso Molefe', 'kagiso.molefe', '$2y$10$S4ZkKjj6FFeEgQ0fvXUxWeIrhGU9efyfuumBFjyz8iRQAwaHbPZE6', 'Customer' FROM customers WHERE customer_id = 5 AND NOT EXISTS (SELECT 1 FROM users WHERE customer_id = 5);
+INSERT INTO users (customer_id, full_name, username, password_hash, role) SELECT customer_id, 'Zanele Mthembu', 'zanele.mthembu', '$2y$10$0YB4Sk2BPndz8e8RGHr8q.TkretHqn.S6QieDuIGcCL9RQispuDlq', 'Customer' FROM customers WHERE customer_id = 6 AND NOT EXISTS (SELECT 1 FROM users WHERE customer_id = 6);
+INSERT INTO users (customer_id, full_name, username, password_hash, role) SELECT customer_id, 'Bongani Ndlovu', 'bongani.ndlovu', '$2y$10$R3tCz4bogjaLfzFbfFPyyudQMhgY.rAAriEsbASFlFL.DAEzml7Ou', 'Customer' FROM customers WHERE customer_id = 7 AND NOT EXISTS (SELECT 1 FROM users WHERE customer_id = 7);
+INSERT INTO users (customer_id, full_name, username, password_hash, role) SELECT customer_id, 'Precious Sithole', 'precious.sithole', '$2y$10$LdcWwjeVJtuxqUAXvAqr7eeWrC6R69b9Sj4jlVhn4As0vGn5fun9C', 'Customer' FROM customers WHERE customer_id = 8 AND NOT EXISTS (SELECT 1 FROM users WHERE customer_id = 8);
+INSERT INTO users (customer_id, full_name, username, password_hash, role) SELECT customer_id, 'Mandla Zulu', 'mandla.zulu', '$2y$10$jPbqyHe0tUlDZ8DQxv/gIOWDxeFvifEg/Oy9cHbPSgNCKZ1dRi1zm', 'Customer' FROM customers WHERE customer_id = 9 AND NOT EXISTS (SELECT 1 FROM users WHERE customer_id = 9);
+INSERT INTO users (customer_id, full_name, username, password_hash, role) SELECT customer_id, 'Ayanda Mahlangu', 'ayanda.mahlangu', '$2y$10$SMR3XLlwWbRQODre7SrDYesQJu7eH4jYMSPDW0rZ8cVbwFLDrA7IC', 'Customer' FROM customers WHERE customer_id = 10 AND NOT EXISTS (SELECT 1 FROM users WHERE customer_id = 10);
+INSERT INTO users (customer_id, full_name, username, password_hash, role) SELECT customer_id, 'Nokuthula Radebe', 'nokuthula.radebe', '$2y$10$oeeYovtu4tpjqEI9bcaoGeph69l5KsrVOkvJfZe1UCJsDMy1I/OdW', 'Customer' FROM customers WHERE customer_id = 11 AND NOT EXISTS (SELECT 1 FROM users WHERE customer_id = 11);
+INSERT INTO users (customer_id, full_name, username, password_hash, role) SELECT customer_id, 'Tshepo Maseko', 'tshepo.maseko', '$2y$10$0QEakUmOwlZNn5Ew2KFG2eTbv61BPWOjlWNWzj5ACU402oHExRcmi', 'Customer' FROM customers WHERE customer_id = 12 AND NOT EXISTS (SELECT 1 FROM users WHERE customer_id = 12);
+INSERT INTO users (customer_id, full_name, username, password_hash, role) SELECT customer_id, 'Karabo Mokoena', 'karabo.mokoena', '$2y$10$jXhoHzayN8mC8y6pv.BZEuPEQ05ZievNVkXFLoY/LdiLbV8PoYBAq', 'Customer' FROM customers WHERE customer_id = 13 AND NOT EXISTS (SELECT 1 FROM users WHERE customer_id = 13);
+INSERT INTO users (customer_id, full_name, username, password_hash, role) SELECT customer_id, 'Faith Mabaso', 'faith.mabaso', '$2y$10$to1KLJBCjXbCqlMmqQSfc.FJBJRwwcUFRIdqELPQC8m6dtyKwYYoe', 'Customer' FROM customers WHERE customer_id = 14 AND NOT EXISTS (SELECT 1 FROM users WHERE customer_id = 14);
+INSERT INTO users (customer_id, full_name, username, password_hash, role) SELECT customer_id, 'Sibusiso Nene', 'sibusiso.nene', '$2y$10$i76xOttEd3/ofoI4nbf5nOlmxAws58q47B9wtczJBX9lnMjv6H..C', 'Customer' FROM customers WHERE customer_id = 15 AND NOT EXISTS (SELECT 1 FROM users WHERE customer_id = 15);

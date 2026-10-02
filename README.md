@@ -60,6 +60,7 @@ The sample data uses realistic South African names, phone numbers, and Rand pric
 - **Unified role-based login:** administrators use the management dashboard; customers can create an account, sign in through the same page, book appointments, review appointment history, and cancel future scheduled visits.
 - **Customer self-service:** customers register at `/register.php`, use the same login screen as administrators, and are automatically routed to a customer-only portal.
 - **Customer experience features:** visual booking summary, secure profile editing, private appointment history, cancellation of future bookings, and a calculated Glow Rewards tier based on completed visits.
+- **Individual customer credentials:** every imported sample customer has a separate username and temporary password. See [customer login details](docs/CUSTOMER_LOGIN_DETAILS.md) and [the repeatable account seed](database/customer_accounts.sql).
 - **Customer management:** add, search, edit, delete, and view full booking/payment history.
 - **Staff management:** add, search, edit, delete, change availability, and assign services through the `staff_services` M:N table.
 - **Service management:** activate/deactivate services, set duration and Rand price.
