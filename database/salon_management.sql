@@ -22,10 +22,11 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 CREATE TABLE users (
     user_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT UNSIGNED NULL,
     full_name VARCHAR(120) NOT NULL,
     username VARCHAR(50) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
-    role ENUM('Administrator') NOT NULL DEFAULT 'Administrator',
+    role ENUM('Administrator', 'Customer') NOT NULL DEFAULT 'Administrator',
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
@@ -39,6 +40,11 @@ CREATE TABLE customers (
     date_registered DATE NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
+
+ALTER TABLE users
+    ADD CONSTRAINT fk_users_customer
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+    ON UPDATE CASCADE ON DELETE CASCADE;
 
 CREATE TABLE staff (
     staff_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -178,6 +184,10 @@ INSERT INTO customers (first_name, last_name, phone, email, gender, date_registe
 ('Karabo', 'Mokoena', '0835678942', 'karabo.mokoena@example.co.za', 'Female', DATE_SUB(CURDATE(), INTERVAL 12 DAY)),
 ('Faith', 'Mabaso', '0846789053', 'faith.mabaso@example.co.za', 'Female', DATE_SUB(CURDATE(), INTERVAL 8 DAY)),
 ('Sibusiso', 'Nene', '0767890164', 'sibusiso.nene@example.co.za', 'Male', DATE_SUB(CURDATE(), INTERVAL 4 DAY));
+
+INSERT INTO users (customer_id, full_name, username, password_hash, role)
+SELECT customer_id, CONCAT(first_name, ' ', last_name), 'thandi', '$2y$10$.puOiS.nfN4yzzWhgx7Lqe7WCa3z8Hjr.GvWg6Vzjd62BVzo3/25.', 'Customer'
+FROM customers WHERE email = 'thandi.mokoena@example.co.za';
 
 INSERT INTO staff (first_name, last_name, phone, email, position, status) VALUES
 ('Naledi', 'Petersen', '0821112233', 'naledi.petersen@glowhub.co.za', 'Senior Hair Stylist', 'Available'),

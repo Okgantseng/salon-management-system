@@ -20,6 +20,8 @@ A university **Database Systems** project built with **PHP 8+, MySQL, XAMPP, HTM
    ```
 6. Browse to [http://localhost/salon_management/](http://localhost/salon_management/).
 
+If you already imported an older version of this project, back up the database and run `database/migrate_customer_login.sql` in phpMyAdmin instead of dropping your existing data. New installations should import the complete `database/salon_management.sql` file.
+
 ## Default administrator login
 
 | Field | Value |
@@ -29,6 +31,14 @@ A university **Database Systems** project built with **PHP 8+, MySQL, XAMPP, HTM
 | Role | Administrator |
 
 The SQL file stores a `password_hash()` bcrypt hash, **not** the plaintext password.
+
+### Sample customer login
+
+| Field | Value |
+| --- | --- |
+| Username | `thandi` |
+| Password | `Customer@123` |
+| Role | Customer |
 
 ## Sample database content
 
@@ -47,6 +57,8 @@ The sample data uses realistic South African names, phone numbers, and Rand pric
 ## Implemented features
 
 - **Dashboard:** totals, revenue, today’s appointments, upcoming bookings, recent payments, and low-stock alerts.
+- **Unified role-based login:** administrators use the management dashboard; customers can create an account, sign in through the same page, book appointments, review appointment history, and cancel future scheduled visits.
+- **Customer self-service:** customers register at `/register.php`, use the same login screen as administrators, and are automatically routed to a customer-only portal.
 - **Customer management:** add, search, edit, delete, and view full booking/payment history.
 - **Staff management:** add, search, edit, delete, change availability, and assign services through the `staff_services` M:N table.
 - **Service management:** activate/deactivate services, set duration and Rand price.

@@ -6,6 +6,7 @@
 erDiagram
     USERS {
         int user_id PK
+        int customer_id FK
         string full_name
         string username UK
         string password_hash
@@ -86,6 +87,7 @@ erDiagram
     }
 
     CUSTOMERS ||--o{ APPOINTMENTS : books
+    CUSTOMERS o|--o| USERS : authenticates_as
     STAFF ||--o{ APPOINTMENTS : performs
     SERVICES ||--o{ APPOINTMENTS : provides
     STAFF ||--o{ STAFF_SERVICES : qualifies_for

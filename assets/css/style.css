@@ -72,6 +72,31 @@ a { color: var(--blue); }
 .login-card.card { border-radius: 1.35rem; }
 .login-logo { width: 3.4rem; height: 3.4rem; font-size: 1.55rem; margin: auto; }
 .login-page .btn-primary { width: 100%; }
+.customer-shell { min-height: 100vh; background: var(--cream); }
+.customer-nav { min-height: 76px; padding: 1rem clamp(1rem, 4vw, 4.5rem); background: #fff; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 2rem; box-shadow: 0 5px 20px rgba(31, 48, 85, .04); }
+.customer-nav .brand { color: var(--navy); }
+.customer-nav .brand:hover { color: var(--navy); }
+.customer-links { display: flex; gap: .35rem; margin-right: auto; }
+.customer-link { color: var(--muted); text-decoration: none; padding: .55rem .75rem; border-radius: .6rem; font-weight: 650; }
+.customer-link:hover, .customer-link.active { color: var(--blue-dark); background: #edf3ff; }
+.customer-link i { margin-right: .3rem; }
+.customer-account { display: flex; align-items: center; gap: .55rem; font-weight: 650; }
+.customer-avatar { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 50%; background: linear-gradient(135deg, var(--rose), #f2b5bf); color: #fff; font-weight: 800; }
+.customer-main { max-width: 1250px; margin: 0 auto; padding: 2.5rem clamp(1rem, 4vw, 2.25rem); }
+.customer-page-heading { display: flex; justify-content: space-between; margin-bottom: 1.5rem; }
+.customer-welcome { position: relative; overflow: hidden; border-radius: 1.2rem; padding: 2rem 2.2rem; margin-bottom: 1.4rem; color: #fff; background: linear-gradient(115deg, #1b2e56 0%, #3768c8 60%, #51a9c0 100%); box-shadow: var(--shadow); }
+.customer-welcome .hero-copy { margin-bottom: 1rem; }
+.customer-welcome-art { position: absolute; right: 10%; top: 22%; font-size: 6rem; color: rgba(255,255,255,.22); transform: rotate(12deg); }
+.customer-stat { background: #fff; border: 1px solid var(--line); border-radius: 1rem; padding: 1rem 1.1rem; display: flex; align-items: center; gap: .8rem; box-shadow: 0 10px 28px rgba(31,48,85,.05); }
+.customer-stat-icon { width: 2.7rem; height: 2.7rem; display: inline-flex; align-items: center; justify-content: center; border-radius: .85rem; font-size: 1.25rem; }
+.customer-stat-icon.blue { background: #e9f0ff; color: var(--blue); }
+.customer-stat-icon.rose { background: #ffedf2; color: #c65372; }
+.customer-stat-icon.gold { background: #fff5dd; color: #b97918; }
+.customer-stat strong { display: block; font-size: 1.35rem; }
+.customer-stat small { color: var(--muted); }
+.booking-card { max-width: 930px; }
+.booking-intro { display: flex; align-items: center; gap: .85rem; }
 @media (max-width: 900px) { .sidebar { position: static; width: 100%; min-height: auto; } .app-shell { display: block; } .sidebar .nav { flex-direction: row; flex-wrap: wrap; } .sidebar .nav-link { font-size: .8rem; } .sidebar-footer { display: none; } .main-content { margin-left: 0; width: 100%; padding: 1.25rem; } .brand-subtitle { margin: .5rem .35rem; } .topbar { gap: 1rem; } .hero-orb { right: 8%; opacity: .55; } }
-@media (max-width: 575px) { .main-content { padding: 1rem .75rem; } .topbar { align-items: flex-start !important; } .topbar .text-end { font-size: .78rem; } .hero-content { padding: 1.3rem 1.15rem; } .hero-orb { display: none; } }
+@media (max-width: 900px) { .customer-nav { flex-wrap: wrap; gap: .75rem; } .customer-links { order: 3; width: 100%; overflow-x: auto; } }
+@media (max-width: 575px) { .main-content { padding: 1rem .75rem; } .topbar { align-items: flex-start !important; } .topbar .text-end { font-size: .78rem; } .hero-content { padding: 1.3rem 1.15rem; } .hero-orb, .customer-welcome-art { display: none; } .customer-main { padding: 1.5rem .75rem; } .customer-welcome { padding: 1.4rem; } }
 @media print { .sidebar, .topbar, .btn, .search-form, footer, .no-print, .dashboard-hero { display: none !important; } .main-content { margin: 0; width: 100%; padding: 0; } .card { box-shadow: none !important; border: 0 !important; } .print-heading { display: block; } .table { font-size: 10pt; } }

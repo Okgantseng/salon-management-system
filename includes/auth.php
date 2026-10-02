@@ -25,11 +25,24 @@ function is_admin(): bool
     return is_logged_in() && (current_user()['role'] ?? '') === 'Administrator';
 }
 
+function is_customer(): bool
+{
+    return is_logged_in() && (current_user()['role'] ?? '') === 'Customer';
+}
+
+function login_home(): string
+{
+    return is_customer() ? 'customer_portal/index.php' : 'index.php';
+}
+
 function require_login(): void
 {
     if (!is_logged_in()) {
         set_flash('warning', 'Please log in to continue.');
         redirect('login.php');
+    }
+    if (is_customer()) {
+        redirect('customer_portal/index.php');
     }
 }
 
@@ -38,13 +51,25 @@ function require_admin(): void
     require_login();
     if (!is_admin()) {
         set_flash('danger', 'Administrator access is required for that page.');
+        redirect(login_home());
+    }
+}
+
+function require_customer(): void
+{
+    if (!is_logged_in()) {
+        set_flash('warning', 'Please log in to continue.');
+        redirect('login.php');
+    }
+    if (!is_customer()) {
+        set_flash('danger', 'This page is for customer accounts.');
         redirect('index.php');
     }
 }
 
 function attempt_login(string $username, string $password): bool
 {
-    $user = one_row('SELECT user_id, full_name, username, password_hash, role FROM users WHERE username = :username LIMIT 1', [
+    $user = one_row('SELECT user_id, customer_id, full_name, username, password_hash, role FROM users WHERE username = :username LIMIT 1', [
         ':username' => $username,
     ]);
 
