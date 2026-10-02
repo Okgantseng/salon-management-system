@@ -25,6 +25,7 @@ if (!$customer) {
             <a class="customer-link <?= ($customer_active ?? '') === 'home' ? 'active' : '' ?>" href="<?= e(app_url('customer_portal/index.php')) ?>"><i class="bi bi-house-heart"></i> My portal</a>
             <a class="customer-link <?= ($customer_active ?? '') === 'book' ? 'active' : '' ?>" href="<?= e(app_url('customer_portal/book.php')) ?>"><i class="bi bi-calendar-plus"></i> Book appointment</a>
             <a class="customer-link <?= ($customer_active ?? '') === 'appointments' ? 'active' : '' ?>" href="<?= e(app_url('customer_portal/appointments.php')) ?>"><i class="bi bi-calendar2-check"></i> My appointments</a>
+            <a class="customer-link <?= ($customer_active ?? '') === 'profile' ? 'active' : '' ?>" href="<?= e(app_url('customer_portal/profile.php')) ?>"><i class="bi bi-person-circle"></i> My profile</a>
         </nav>
         <div class="customer-account"><span class="customer-avatar"><?= e(strtoupper(substr($customer['first_name'], 0, 1))) ?></span><span class="d-none d-md-inline">Hi, <?= e($customer['first_name']) ?></span><a href="<?= e(app_url('logout.php')) ?>" class="btn btn-sm btn-outline-secondary">Log out</a></div>
     </header>

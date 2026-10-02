@@ -30,6 +30,19 @@ function is_customer(): bool
     return is_logged_in() && (current_user()['role'] ?? '') === 'Customer';
 }
 
+function customer_accounts_enabled(): bool
+{
+    static $enabled = null;
+    if ($enabled !== null) return $enabled;
+    $enabled = (bool) scalar("SELECT COUNT(*) FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'users' AND COLUMN_NAME = 'customer_id'");
+    return $enabled;
+}
+
+function customer_schema_message(): string
+{
+    return 'Customer accounts are not enabled in this database yet. Import database/migrate_customer_login.sql in phpMyAdmin, then try again.';
+}
+
 function login_home(): string
 {
     return is_customer() ? 'customer_portal/index.php' : 'index.php';
@@ -69,7 +82,8 @@ function require_customer(): void
 
 function attempt_login(string $username, string $password): bool
 {
-    $user = one_row('SELECT user_id, customer_id, full_name, username, password_hash, role FROM users WHERE username = :username LIMIT 1', [
+    $columns = customer_accounts_enabled() ? 'user_id, customer_id, full_name, username, password_hash, role' : 'user_id, full_name, username, password_hash, role';
+    $user = one_row("SELECT $columns FROM users WHERE username = :username LIMIT 1", [
         ':username' => $username,
     ]);
 
@@ -79,6 +93,7 @@ function attempt_login(string $username, string $password): bool
 
     session_regenerate_id(true);
     unset($user['password_hash']);
+    $user['customer_id'] = $user['customer_id'] ?? null;
     $_SESSION['user'] = $user;
     return true;
 }

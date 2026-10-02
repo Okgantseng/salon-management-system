@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $firstName = posted('first_name'); $lastName = posted('last_name'); $phone = posted('phone');
     $email = posted('email'); $username = posted('username'); $password = (string) ($_POST['password'] ?? '');
     $gender = posted('gender'); $errors = [];
+    if (!customer_accounts_enabled()) $errors[] = customer_schema_message();
     if ($firstName === '' || $lastName === '') $errors[] = 'Please enter your first and last name.';
     if (!valid_phone($phone)) $errors[] = 'Please enter a valid South African phone number.';
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = 'Please enter a valid email address.';

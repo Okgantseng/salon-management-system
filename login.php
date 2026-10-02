@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($username === '' || $password === '') {
         $error = 'Enter both your username and password.';
     } elseif (!attempt_login($username, $password)) {
-        $error = 'The username or password is incorrect.';
+        $error = !customer_accounts_enabled() ? customer_schema_message() : 'The username or password is incorrect.';
     } else {
         set_flash('success', 'Welcome back.');
         redirect(login_home());

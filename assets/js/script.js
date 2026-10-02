@@ -11,6 +11,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const updateBooking = () => {
       const selected = service.options[service.selectedIndex];
       price.value = selected && selected.dataset.price ? 'R ' + Number(selected.dataset.price).toFixed(2) : '';
+      const summaryName = document.querySelector('[data-summary-name]');
+      const summaryDetail = document.querySelector('[data-summary-detail]');
+      const summaryPrice = document.querySelector('[data-summary-price]');
+      if (summaryName && summaryDetail && summaryPrice) {
+        summaryName.textContent = selected && selected.dataset.name ? selected.dataset.name : 'Select a service to see the details';
+        summaryDetail.textContent = selected && selected.dataset.duration ? selected.dataset.duration + ' minutes · Price retrieved from GlowHub' : 'Price and duration will appear here.';
+        summaryPrice.textContent = selected && selected.dataset.price ? 'R ' + Number(selected.dataset.price).toFixed(2) : '—';
+      }
       if (staff) {
         const serviceId = service.value;
         Array.from(staff.options).forEach((option, index) => {

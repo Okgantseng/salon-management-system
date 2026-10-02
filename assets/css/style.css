@@ -96,6 +96,21 @@ a { color: var(--blue); }
 .customer-stat small { color: var(--muted); }
 .booking-card { max-width: 930px; }
 .booking-intro { display: flex; align-items: center; gap: .85rem; }
+.booking-summary { display: flex; align-items: center; gap: .85rem; padding: 1rem 1.1rem; border: 1px solid #dce7ff; border-radius: .9rem; background: linear-gradient(100deg, #f3f7ff, #fff8fb); }
+.booking-summary .summary-icon { width: 2.5rem; height: 2.5rem; border-radius: .75rem; display: grid; place-items: center; background: #e4edff; color: var(--blue); font-size: 1.2rem; }
+.booking-summary small { display: block; color: var(--blue); font-size: .62rem; letter-spacing: .08em; font-weight: 800; }
+.booking-summary strong, .booking-summary span { display: block; }
+.booking-summary strong { margin-top: .1rem; }
+.booking-summary span { color: var(--muted); font-size: .8rem; }
+.summary-price { margin-left: auto; color: var(--blue-dark); font-weight: 850; font-size: 1.15rem; }
+.loyalty-card { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.25rem; border: 1px solid #f0dfb2; border-radius: 1rem; background: linear-gradient(105deg, #fff9e8, #fff 72%); box-shadow: 0 10px 26px rgba(154, 108, 23, .06); }
+.loyalty-icon { width: 3rem; height: 3rem; display: grid; place-items: center; border-radius: 1rem; background: #f8d27a; color: #8a5d13; font-size: 1.4rem; }
+.loyalty-card small.text-uppercase { color: #9a6c17; font-size: .62rem; letter-spacing: .1em; font-weight: 800; }
+.loyalty-points { color: #9a6c17; font-size: 1.15rem; }
+.loyalty-card .progress { height: .45rem; background: #f4e8c5; }
+.loyalty-card .progress-bar { background: linear-gradient(90deg, #e5a92f, #f3c85b); }
+.customer-tip-card { padding: 1.6rem; border-radius: 1rem; border: 1px solid #dce7ff; background: linear-gradient(135deg, #eef4ff, #fff); color: var(--blue-dark); }
+.customer-tip-card > i { font-size: 2rem; }
 @media (max-width: 900px) { .sidebar { position: static; width: 100%; min-height: auto; } .app-shell { display: block; } .sidebar .nav { flex-direction: row; flex-wrap: wrap; } .sidebar .nav-link { font-size: .8rem; } .sidebar-footer { display: none; } .main-content { margin-left: 0; width: 100%; padding: 1.25rem; } .brand-subtitle { margin: .5rem .35rem; } .topbar { gap: 1rem; } .hero-orb { right: 8%; opacity: .55; } }
 @media (max-width: 900px) { .customer-nav { flex-wrap: wrap; gap: .75rem; } .customer-links { order: 3; width: 100%; overflow-x: auto; } }
 @media (max-width: 575px) { .main-content { padding: 1rem .75rem; } .topbar { align-items: flex-start !important; } .topbar .text-end { font-size: .78rem; } .hero-content { padding: 1.3rem 1.15rem; } .hero-orb, .customer-welcome-art { display: none; } .customer-main { padding: 1.5rem .75rem; } .customer-welcome { padding: 1.4rem; } }
